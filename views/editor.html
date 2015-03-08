@@ -1,0 +1,43 @@
+﻿{% extends 'layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+
+{% block mainbody %}
+
+    <div id="breadcrumbs">
+        <a class="crumb" href="javascript:window.history.back();">Go back</a>
+    </div>
+
+ 	 <div class="editor">
+
+      <div class="headline">
+          <h1>{{title}}</h1>
+      </div>
+
+      <form method="POST" action="{{ url }}?_method=put">
+        
+          <div class="username">
+              <label for="username">Please enter a username:</label>
+              <input id="username" type="text" name="username" value="{{content.username}}" />
+          </div>
+        
+          <!-- show input for title if editor type is question -->
+          {% if content.title !== null  %}
+          <div class="title">
+              <label for="title">Title:</label>
+              <input id="title" type="text" name="title" value="{{content.title}}" />
+          </div>
+          {% endif %}
+
+                     
+          <textarea name="content">{{content.content}}</textarea>
+
+          <!--html button for submit-->
+          <input class="submit_button" type="submit" value="Submit" />
+
+      </form>
+
+    </div> <!--/editor-->
+
+{% endblock %}      

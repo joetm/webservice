@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+{% block title %} Home Page {% endblock %}
+
+{% block askquestion %}{% endblock %}
+{% block mainbody %}
+      <div class="question_area">
+
+        <div class="editor">
+
+          <form method="POST" action="/questions">
+
+            <div class="username">
+                <label for="user">Please enter a username:</label>
+                <input id="user" type="text" name="username" placeholder="eg. user123" />
+            </div>
+ 
+            <div class="title">
+                <label for="title">Title:</label>
+                <input id="title" type="text" name="title" />
+            </div>
+
+            <div class="question">
+                <label for="question">Question:</label>
+            </div>
+            <textarea id="question" name="content"></textarea>
+
+            <!--html button for submit-->
+            <input class="submit_button" type="submit" value="Ask Question" />
+
+          </form>
+
+        </div> <!--/editor-->
+
+  	  </div> <!--/question_area-->
+
+
+      <div class="headline">
+          <h1>All Questions</h1>
+          <div class="tabs">
+              <a class="selected" href="/?sortby=date#question_list">newest</a>
+              <a class="selected" href="/?sortby=title#question_list">alphabetical</a>
+          </div>
+      </div>
+
+      <div id="question_list"> 
+
+          {% if questions.length === 0 %}
+              <div class="error">
+              No questions, yet.
+              </div>
+          {% endif %}
+
+          {% for question in questions %}
+            <div class="question">
+
+                <div class="states">
+                    <div class="status">
+                        <div class="answers">
+                          <strong>{{question.answer.length}}</strong>
+                        </div>
+                        <span>answers</span>
+                    </div>
+                </div>
+
+                <div class="body">
+                    <h3><a href="/questions/{{question.id}}"><!--Question title: -->{{question.title}}</a></h3>
+                    <p><!--Question content: -->{{question.content}}</p>
+                </div>
+
+                <div class="meta">{{question.time}}</div>
+                <div class="meta">asked by {{question.username}}</div>
+
+             </div> <!--/question-->
+         {% endfor %}
+
+      </div> <!--/question_list-->
+
+ {% endblock %}
+

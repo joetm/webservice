@@ -1,0 +1,161 @@
+{% extends 'layout.html' %}
+
+
+{% block title %} Question Page {% endblock %}
+
+
+{% block mainbody %}
+
+      <div id="breadcrumbs">
+          <a class="crumb" href="/">question list</a>
+          &gt;
+          <span class="crumb">question {{question.id}}</span>
+      </div>
+
+      <!-- Section for question -->
+      <div class="question" id="question-{{question.id}}">
+
+        <div class="headline">
+            <h1>{{question.title}}</h1>
+        </div>
+
+        <div id="body">
+
+        	<p>{{question.content}}</p>
+         
+          <div class="actions"> 
+              <a href="/questions/{{question.id}}/edit">edit</a>
+              <form id="question_delete" method="POST" action="/questions/{{ question.id }}?_method=delete">
+                  <input type="submit" name="delete" value="delete" />	
+              </form>
+          </div>
+        
+          <div class="meta">{{question.time}}</div>
+          <div class="meta">asked by {{question.username}}</div>
+
+
+          <!-- section for comments -->  
+          {% if question.comment.length > 0 %}
+              <div class="comments">
+                  {% for comment in question.comment %}
+                  <div class="comment" id="question-comment-{{comment.id}}">
+
+                       <p>{{comment.content}}</p>
+                       
+                       <span class="meta">{{comment.time}}</span>
+                       <span class="meta">commented by {{comment.username}}</span>
+                       
+                       <div class="actions">
+                          <a href="/questions/{{question.id}}/comments/{{comment.id}}/edit" title="Edit Comment">
+                              edit
+                          </a>
+                          <form class="comment_delete" method="POST" action="/questions/{{question.id}}/comments/{{comment.id}}?_method=delete">
+                              <input type="submit" name="delete" title="Delete Comment" value="delete" />  
+                          </form>
+                      </div>
+
+                  </div>
+                  {% endfor %}    
+              </div>
+          {% endif %}
+
+          <div class="comment-form">
+               <form method="POST" action="/questions/{{question.id}}/comments" >
+
+                <div class="username">
+                    <label for="question_comment_user">Please enter a username:</label>
+                    <input id="question_comment_user" class="username" type="text" name="username" placeholder="eg. user123" />
+                </div>
+
+                <textarea name="content" cols="100" rows="3"></textarea>
+                <!--html button for submit-->
+                <input class="submit_button" type="submit" value="Add a comment" />
+
+              </form>
+          </div>
+    
+        </div> <!--body-->
+        
+      </div> <!--question-->
+      
+      <!-- Section for answers -->
+       <div class="answer_section">
+
+        <div class="headline">
+            <h1>{{answers.length}} Answers</h1>
+        </div>
+        
+        <!-- list of answers of the question --> 
+         <div class="answers">
+         
+         <!-- single answer -->
+         {% if answers.length > 0 %}
+         {% for answer in answers %}
+           <div class="answer" id="answer-{{answer.id}}">
+
+        	   <p>{{answer.content}}</p>
+            
+             <div class="actions"> 
+                 <a href="/questions/{{ question.id }}/answers/{{ answer.id }}/edit">edit</a>
+                 <form method="POST" action="/questions/{{ question.id }}/answers/{{ answer.id }}?_method=delete">
+                     <input type="submit" name="delete" value="delete" />	
+                 </form>
+             </div>
+             
+             <div class="meta">{{answer.time}} </div>
+             <div class="meta">asked by {{answer.username}}</div>
+   
+              <!-- section for comments -->  
+             {% if answer.comment.length > 0 %}
+                <div class="comments">
+                   {% for comment in answer.comment %}
+                    <div class="comment" id="answer-comment-{{comment.id}}">
+                       <p>{{comment.content}}</p>
+                       <span class="meta">{{comment.time}}</span>
+                       <span class="meta">commented by {{comment.username}}</span>
+
+                       <div class="actions">
+                         <a href="/questions/{{question.id}}/answers/{{answer.id}}/comments/{{comment.id}}/edit">edit</a>
+                         <form method="POST" action="/questions/{{ question.id }}/answers/{{ answer.id }}/comments/{{ comment.id }}?_method=delete">
+            				        <input type="submit" name="delete" value="delete" />	
+                         </form>
+                      </div>
+
+                    </div>
+                   {% endfor %}    
+                </div>
+              {% endif %}
+              
+                <div class="comment-form">
+                <form method="POST" action="/questions/{{ question.id }}/answers/{{ answer.id }}/comments" >
+                      <div>
+                          <label for="answer-{{ answer.id }}-comment_user">Please enter a username:</label>
+                          <input id="answer-{{ answer.id }}-comment_user" class="username" type="text" name="username" placeholder="eg. user123" />
+                      </div>
+                      <textarea name="content" cols="50" rows="5"></textarea>
+                          <!--html button for submit-->
+                          <input class="submit_button" type="submit" value="Add a comment" />
+                    </form>
+                </div>
+
+           </div>
+           
+           <div class="divider"></div>
+           {% endfor %}
+           {% endif %}
+                 
+        </div>
+
+        <div id="answer-form">
+            <form method="POST" action="/questions/{{question.id}}/answers">
+                <h2>Your Answer</h2>
+                <label for="answer_user">Please enter a username:</label>
+                <input id="answer_user" class="username" type="text" placeholder="eg. user123" name="username" />
+                <textarea name="content" cols="92" rows="15"></textarea>
+                <input class="submit_button" type="submit" value="Submit Your Answer" />
+            </form>
+        </div>
+
+      </div>
+        
+{% endblock %}

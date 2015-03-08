@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+</head>
+<body>
+
+<div id="wrapper">
+
+  <div id="header">
+      <a href="/" title="Stackunderflow Homepage"><img class="logo" src="/images/logo.png" alt="STACKUNDERFLOW" /></a>
+  </div>
+  
+  {% block askquestion %}
+  <div id="sidebar">
+      <a id="askquestion_button" href="/">ASK QUESTION</a>
+  </div>
+  {% endblock %}
+  
+  <div id="content">
+      <div id="mainbody">
+        {% block mainbody %}
+        {% endblock %}
+      </div> <!--/mainbody-->
+  </div> <!--/content-->
+
+</div> <!--/wrapper-->
+
+<div id="footer">
+  {% block footer %}{% endblock %}
+</div>
+
+</body>
+</html>

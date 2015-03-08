@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %} Error Page {% endblock %}
+
+{% block mainbody %} 
+
+	<div id="breadcrumbs">
+		<a class="crumb" href="javascript:window.history.back();">Go back</a>
+	</div>
+
+	<div id="error">
+	    <div id="headline">Oops! There was an error!</div>
+	    <div id="status">Error Status: {{status}}</div>
+	    <div id="message">{{message}}</div>
+	</div> <!--/error-->
+
+{% endblock %}
