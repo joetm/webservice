@@ -4,10 +4,10 @@ Assignment
 
 Group 8
 
-Niko Tsakalakis (nt4g14)
-Georgi Tsonev (gt2g11)
-Menghong Huo (mh11g11)
-Jonas Oppenlaender (jo2e14)
+N. Tsakalakis
+G. Tsonev
+M. Huo
+J. Oppenlaender
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -22,10 +22,10 @@ Stackunderflow Website & API
 Technologies used
 -------------
 *   NodeJS
-*   *   Express
-*   *   Swig
-*   *   SQLite3
-*   *   Node-orm2
+*      Express
+*      Swig
+*      SQLite3
+*      Node-orm2
 *   CSS3
 
 
