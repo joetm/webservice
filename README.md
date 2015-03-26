@@ -1,4 +1,4 @@
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Web Architecture (COMP6218)
 Assignment
 
@@ -8,21 +8,19 @@ Niko Tsakalakis (nt4g14)
 Georgi Tsonev (gt2g11)
 Menghong Huo (mh11g11)
 Jonas Oppenlaender (jo2e14)
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Stackunderflow Website & API
 =============
 
 
-![Screenshot](projects/webservice/screenshots)
-![Screenshot](projects/webservice/screenshots)
+![Screenshot](https://github.com/joetm/webservice/blob/master/screenshots/thumbs/th_homepage.jpg?raw=true)
+![Screenshot](https://github.com/joetm/webservice/blob/master/screenshots/thumbs/th_question.jpg?raw=true)
 
 
-
----
 Installation
----
+-------------
 
 Extract the zip file into a folder.
 Start node with this command: node app.js
@@ -36,9 +34,8 @@ This file needs to be writable by the server.
 Curl script: curl.sh
 
 
----
 List of all valid routes
----
+-------------
 
 :qid, :aid, :cid => absolute numeric ids of question, answer, comment
 
@@ -138,9 +135,8 @@ Note: The editors for new questions/answers/comments are embedded in the fronten
 and have no separate routes.
 
 
----
 API-only routes
----
+-------------
 
 The following routes are only available in the API (JSON), not the frontend (HTML).
 
@@ -155,9 +151,8 @@ Requesting the ...
 - specific comment for an answer to a question (Route: '/questions/:qid/answers/:aid/comments/:cid')
 
 
----
 Frontend-only routes
----
+-------------
 
 The following routes are only available on the frontend )HTML), not the API (JSON).
 
@@ -168,9 +163,8 @@ Editors:
 - edit a specific comment for answer (Route: '/questions/:qid/answers/:aid/comments/:cid/edit')
 
 
-----
 Redirects
----
+-------------
 
 The route '/questions' is an alias of the homepage ('/') and redirects with a 301 HTTP status.
 
@@ -213,26 +207,23 @@ Requesting...
   Justification: It does not make sense to reply with JSON when the editor is requested.
 
 
----
 HTTP response to deletions
----
+-------------
 
 If JSON is requested, the API will respond with a 204 STATUS code on deletions without outputting a success message.
 The frontend will redirect to the appropriate page and page fragment.
 
 
----
 Date and Times
----
+-------------
 
 The JSON API will return the date/time formatted as integer unix timestamp (number of seconds elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970).
 This allows custom formatting.
 The website on the other hand outputs the date in a more readable format (e.g. "x minutes ago").
 
 
----
 Other Default Behavior
----
+-------------
 
 If the accept header is missing, the web application will respond with HTML on routes that support HTML.
 It will respond with JSON on routes that do not support HTML.
