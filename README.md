@@ -19,6 +19,16 @@ Stackunderflow Website & API
 ![Screenshot](https://github.com/joetm/webservice/blob/master/screenshots/thumbs/th_question.jpg?raw=true)
 
 
+Technologies used
+-------------
+*   NodeJS
+*   *   Express
+*   *   Swig
+*   *   SQLite3
+*   *   Node-orm2
+*   CSS3
+
+
 Installation
 -------------
 
