@@ -44,65 +44,65 @@ homepage
 - valid methods: GET, HEAD
 - template: views/index.html
 - validity: text/html, application/json
-http://localhost:3000/
+- http://localhost:3000/
 
 questions (alias of homepage)
 - valid methods: GET, HEAD, POST
-http://localhost:3000/questions
+- http://localhost:3000/questions
 
 answers of question
 - valid methods: GET, HEAD, POST
-http://localhost:3000/questions/:qid/answers
+- http://localhost:3000/questions/:qid/answers
 
 comments of a specific question
 - valid methods: GET, HEAD, POST
-http://localhost:3000/questions/:qid/comments
+- http://localhost:3000/questions/:qid/comments
 
 all comments of a specific answer
 - valid methods: GET, HEAD, POST
-http://localhost:3000/questions/:qid/answers/:aid/comments
+- http://localhost:3000/questions/:qid/answers/:aid/comments
 
 single question
 - valid methods: GET, HEAD, PUT, DELETE
 - template: views/singlequestion.html
 - validity: text/html, application/json
-http://localhost:3000/questions/:qid
+- http://localhost:3000/questions/:qid
 
 single answer
 - valid methods: GET, HEAD, PUT, DELETE
-http://localhost:3000/questions/:qid/answers/:aid
+- http://localhost:3000/questions/:qid/answers/:aid
 
 single comment to question
 - valid methods: GET, HEAD, PUT, DELETE
-http://localhost:3000/questions/:qid/comments/:cid
+- http://localhost:3000/questions/:qid/comments/:cid
 
 single comment to answer
 - valid methods: GET, HEAD, PUT, DELETE
-http://localhost:3000/questions/:qid/answers/:aid/comments/:cid
+- http://localhost:3000/questions/:qid/answers/:aid/comments/:cid
 
 question editor (to edit existing question)
 - valid methods: GET, HEAD
 - template: views/editor.html
 - validity: text/html
-http://localhost:3000/questions/:qid/edit
+- http://localhost:3000/questions/:qid/edit
 
 answer editor (to edit existing answer)
 - valid methods: GET, HEAD
 - template: views/editor.html
 - validity: text/html
-http://localhost:3000/questions/:qid/answers/:aid/edit
+- http://localhost:3000/questions/:qid/answers/:aid/edit
 
 comment editor (for a comment to a question) (to edit existing comment)
 - valid methods: GET, HEAD
 - template: views/editor.html
 - validity: text/html
-http://localhost:3000/questions/:qid/comments/:cid/edit
+- http://localhost:3000/questions/:qid/comments/:cid/edit
 
 comment editor (for a comment to an answer) (to edit existing comment)
 - valid methods: GET, HEAD
 - template: views/editor.html
 - validity: text/html
-http://localhost:3000/questions/:qid/answers/:aid/comments/:cid/edit
+- http://localhost:3000/questions/:qid/answers/:aid/comments/:cid/edit
 
 
 Note: The editors for new questions/answers/comments are embedded in the frontend
